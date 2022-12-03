@@ -8,6 +8,7 @@
 #include "Day02.hpp"
 
 #include <unordered_map>
+#include <string>
 
 using namespace AdventOfCode_2022;
 

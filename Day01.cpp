@@ -8,6 +8,7 @@
 #include "Day01.hpp"
 
 #include <vector>
+#include <algorithm>
 
 using namespace AdventOfCode_2022;
 
