@@ -12,32 +12,13 @@
 #include <string>
 #include <unordered_set>
 
+#include "utilities.hpp"
+
 using namespace AdventOfCode_2022;
-
-std::vector<std::string> splitString(const std::string& string, const char delim)
-{
-    std::vector<std::string> strings;
-
-    int prevOffset = -1;
-    int offset = string.find(delim);
-
-    while (offset != std::string::npos)
-    {
-        strings.emplace_back(string.substr(std::max(prevOffset, 0), offset));
-        prevOffset = offset + 1;
-        offset = string.find(delim, prevOffset);
-    }
-
-    if (prevOffset >= 0) {
-        strings.emplace_back(string.substr(prevOffset));
-    }
-
-    return strings;
-}
 
 std::pair<int, int> getRange(const std::string& string)
 {
-    auto values = splitString(string, '-');
+    auto values = utilities::splitString(string, '-');
     return { std::stoi(values[0]), std::stoi(values[1]) };
 }
 
@@ -64,7 +45,7 @@ std::string Day04::challenge01(std::ifstream& input)
 
     while (std::getline(input, line))
     {
-        auto pair = splitString(line, ',');
+        auto pair = utilities::splitString(line, ',');
         auto first = pair[0];
         auto second = pair[1];
 
@@ -88,7 +69,7 @@ std::string Day04::challenge02(std::ifstream& input)
 
     while (std::getline(input, line))
     {
-        auto pair = splitString(line, ',');
+        auto pair = utilities::splitString(line, ',');
         auto first = pair[0];
         auto second = pair[1];
 
