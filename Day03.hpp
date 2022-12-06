@@ -1,5 +1,5 @@
 //
-//  Day02.hpp
+//  Day03.hpp
 //  AdventOfCode
 //
 //  Created by Joakim on 2022-12-02.

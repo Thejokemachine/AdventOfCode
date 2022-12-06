@@ -12,10 +12,15 @@
 
 #include <vector>
 #include <string>
+#include <functional>
 
 namespace utilities
 {
   std::vector<std::string> splitString(const std::string& string, const char delim);
+
+  void forEachLine(std::ifstream& stream, std::function<void(const std::string&)> func);
+
+  std::string dumpContents(std::ifstream& stream);
 }
 
 #endif /* utilities_hpp */

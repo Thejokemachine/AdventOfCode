@@ -1,45 +1,67 @@
 //
-//  Day05.cpp
+//  Day06.cpp
 //  AdventOfCode
 //
-//  Created by Joakim on 2022-12-05.
+//  Created by Joakim on 2022-12-06.
 //
 
-/*#include "Day05.hpp"
+#include "Day06.hpp"
+
+#include "utilities.hpp"
 
 #include <fstream>
 #include <vector>
+#include <string>
+#include <sstream>
+#include <unordered_set>
 
 using namespace AdventOfCode_2022;
 
-std::string Day05::challenge01(std::ifstream& input)
+void shiftLeft(std::string& s, char back)
 {
-    std::string line;
-
-    while (std::getline(input, line))
-    {
-    }
-
-    return "";
+    s.push_back(back);
+    s = s.substr(1);
 }
 
-std::string Day05::challenge02(std::ifstream& input)
+int signalProcessing(std::ifstream& input, const int KEY_LENGTH)
 {
-    std::string line;
-  
-  std::vector<int> v;
-  
-  int uno = 0[v.data()];
-    
-    char f = line[0];
-    char first = 0[line.c_str()];
-    char second = 1["Hello"];
+    int markerPosition = 0;
 
-    while (std::getline(input, line))
+    std::string content = utilities::dumpContents(input);
+
+    std::string buffer(KEY_LENGTH, '0');
+    int bufferIndex = 0;
+
+
+    for (const auto& c : content)
     {
+        if (bufferIndex >= KEY_LENGTH)
+        {
+            std::unordered_set<char> set;
+            for (const auto& cb : buffer)
+            {
+                set.insert(cb);
+            }
+            if (set.size() == KEY_LENGTH)
+            {
+                markerPosition = bufferIndex;
+                break;
+            }
+        }
+
+        shiftLeft(buffer, c);
+        ++bufferIndex;
     }
 
-    return "";
 }
- */
+
+std::string Day06::challenge01(std::ifstream& input)
+{
+    return std::to_string(signalProcessing(input, 4));
+}
+
+std::string Day06::challenge02(std::ifstream& input)
+{
+    return std::to_string(signalProcessing(input, 14));
+}
 

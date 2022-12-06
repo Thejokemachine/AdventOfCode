@@ -52,7 +52,7 @@ public:
   
   void moveCrates(int from, int to, int amount)
   {
-    char crates[amount];
+    char* crates = new char[amount];
     
     auto& stackFrom = stacks[from];
     auto& stackTo = stacks[to];
