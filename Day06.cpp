@@ -53,6 +53,7 @@ int signalProcessing(std::ifstream& input, const int KEY_LENGTH)
         ++bufferIndex;
     }
 
+    return bufferIndex;
 }
 
 std::string Day06::challenge01(std::ifstream& input)

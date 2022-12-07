@@ -13,9 +13,9 @@
 
 #include <vector>
 
-#include "Day06.hpp"
+#include "Day07.hpp"
 
-#define TESTING 0
+#define TESTING 1
 
 AdventOfCode::AdventOfCode()
 {
@@ -25,5 +25,5 @@ AdventOfCode::AdventOfCode()
   std::ifstream stream("input.txt");
 #endif
   
-  std::cout << AdventOfCode_2022::Day06::challenge01(stream) << std::endl;
+  std::cout << AdventOfCode_2022::Day07::challenge02(stream) << std::endl;
 }
