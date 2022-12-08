@@ -13,6 +13,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
 
 using namespace AdventOfCode_2022;
 
