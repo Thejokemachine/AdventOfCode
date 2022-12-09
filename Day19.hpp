@@ -1,19 +1,19 @@
 //
-//  Day05.hpp
+//  Day09.hpp
 //  AdventOfCode
 //
-//  Created by Joakim on 2022-12-05.
+//  Created by Joakim on 2022-12-09.
 //
 
-#ifndef Day05_hpp
-#define Day05_hpp
+#ifndef Day09_hpp
+#define Day09_hpp
 
 #include <stdio.h>
 #include <fstream>
 
 namespace AdventOfCode_2022
 {
-    class Day05
+    class Day09
     {
     public:
         static std::string challenge01(std::ifstream& input);
@@ -21,4 +21,4 @@ namespace AdventOfCode_2022
     };
 }
 
-#endif /* Day05_hpp */
+#endif /* Day09_hpp */
