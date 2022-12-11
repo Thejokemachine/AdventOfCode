@@ -1,18 +1,19 @@
 //
-//  Day05.cpp
+//  Day12.cpp
 //  AdventOfCode
 //
-//  Created by Joakim on 2022-12-05.
+//  Created by Joakim on 2022-12-12.
 //
 
-/*#include "Day05.hpp"
+#include "Day12.hpp"
 
 #include <fstream>
 #include <vector>
+#include <string>
 
 using namespace AdventOfCode_2022;
 
-std::string Day05::challenge01(std::ifstream& input)
+std::string Day12::challenge01(std::ifstream& input)
 {
     std::string line;
 
@@ -23,7 +24,7 @@ std::string Day05::challenge01(std::ifstream& input)
     return "";
 }
 
-std::string Day05::challenge02(std::ifstream& input)
+std::string Day12::challenge02(std::ifstream& input)
 {
     std::string line;
   
@@ -41,6 +42,3 @@ std::string Day05::challenge02(std::ifstream& input)
 
     return "";
 }
-
-
- */

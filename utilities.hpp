@@ -16,7 +16,7 @@
 
 namespace utilities
 {
-  std::vector<std::string> splitString(const std::string& string, const char delim);
+  std::vector<std::string> splitString(const std::string& string, const std::string& delim);
 
   void forEachLine(std::ifstream& stream, std::function<void(const std::string&)> func);
 

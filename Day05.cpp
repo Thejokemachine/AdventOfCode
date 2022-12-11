@@ -26,7 +26,7 @@ struct Command
   
   Command(const std::string& input)
   {
-    auto split = utilities::splitString(input, ' ');
+    auto split = utilities::splitString(input, " ");
     amount = std::stoi(1[split.data()]);
     from = std::stoi(3[split.data()]);
     to = std::stoi(5[split.data()]);

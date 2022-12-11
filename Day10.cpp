@@ -33,7 +33,7 @@ InstructionQueue buildQueue(std::ifstream& stream)
     std::string line;
     while (std::getline(stream, line))
     {
-        auto split = utilities::splitString(line, ' ');
+        auto split = utilities::splitString(line, " ");
 
         if (split.front() == "noop")
         {

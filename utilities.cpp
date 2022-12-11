@@ -13,7 +13,7 @@
 
 using namespace utilities;
 
-std::vector<std::string> utilities::splitString(const std::string& string, const char delim)
+std::vector<std::string> utilities::splitString(const std::string& string, const std::string& delim)
 {
   std::vector<std::string> strs;
     
@@ -22,7 +22,7 @@ std::vector<std::string> utilities::splitString(const std::string& string, const
   do {
     end = string.find(delim, start);
     strs.emplace_back(string.substr(start, end - start));
-    start = end + 1;
+    start = end + delim.length();
   } while (end != std::string::npos);
   
   return strs;

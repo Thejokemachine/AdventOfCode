@@ -18,7 +18,7 @@ using namespace AdventOfCode_2022;
 
 std::pair<int, int> getRange(const std::string& string)
 {
-    auto values = utilities::splitString(string, '-');
+    auto values = utilities::splitString(string, "-");
     return { std::stoi(values[0]), std::stoi(values[1]) };
 }
 
@@ -45,7 +45,7 @@ std::string Day04::challenge01(std::ifstream& input)
 
     while (std::getline(input, line))
     {
-        auto pair = utilities::splitString(line, ',');
+        auto pair = utilities::splitString(line, ",");
         auto first = pair[0];
         auto second = pair[1];
 
@@ -69,7 +69,7 @@ std::string Day04::challenge02(std::ifstream& input)
 
     while (std::getline(input, line))
     {
-        auto pair = utilities::splitString(line, ',');
+        auto pair = utilities::splitString(line, ",");
         auto first = pair[0];
         auto second = pair[1];
 

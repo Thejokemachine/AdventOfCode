@@ -81,7 +81,7 @@ std::shared_ptr<Folder> buildDirectory(std::ifstream& input)
 
     while (std::getline(input, line))
     {
-        auto split = utilities::splitString(line, ' ');
+        auto split = utilities::splitString(line, " ");
 
         bool isCommand = split.front().front() == '$';
         lsMode &= not isCommand;
