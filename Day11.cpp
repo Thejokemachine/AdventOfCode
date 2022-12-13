@@ -18,26 +18,28 @@
 
 using namespace AdventOfCode_2022;
 
+using size_type = long long;
+
 struct Monkey
 {
-    void throwint(Monkey& receiver)
+    void throwItem(Monkey& receiver)
     {
-        receiver.ints.emplace(ints.front());
-        ints.pop();
+        receiver.items.emplace(items.front());
+        items.pop();
     }
-    int testWorry(int worry)
+    int testWorry(size_type worry)
     {
         return (worry % divTest == 0) ? onTrue : onFalse;
     }
 
-    std::queue<int> ints;
+    std::queue<size_type> items;
 
-    std::function<int(int)> onInspect;
-    int divTest;
+    std::function<size_type(size_type)> onInspect;
+    size_type divTest;
     int onTrue;
     int onFalse;
 
-    int totalInspections = 0;
+    size_type totalInspections = 0;
 };
 
 Monkey createMonkey(std::ifstream& stream)
@@ -50,14 +52,14 @@ Monkey createMonkey(std::ifstream& stream)
     auto startingItems = utilities::splitString(line, ", ");
     for (auto item : startingItems)
     {
-        monkey.ints.emplace(std::stoi(item));
+        monkey.items.emplace(std::stoi(item));
     }
 
     std::getline(stream, line);
     auto split = utilities::splitString(line, " ");
     auto v = split.back();
     char op = split[split.size() - 2].front();
-    int value = 0;
+    size_type value = 0;
     if (std::isdigit(v.back())) {
         value = std::stoi(split.back());
     }
@@ -65,8 +67,8 @@ Monkey createMonkey(std::ifstream& stream)
     {
         op = '^';
     }
-    monkey.onInspect = [&monkey, value, op](int old) {
-        int newValue = old;
+    monkey.onInspect = [&monkey, value, op](size_type old) {
+        size_type newValue = old;
         if (op == '+')
         {
             newValue += value;
@@ -96,22 +98,22 @@ Monkey createMonkey(std::ifstream& stream)
     return monkey;
 }
 
-void performRounds(const int ROUNDS, std::vector<Monkey>& monkeys, std::function<void(int&)> reduceWorry)
+void performRounds(const int ROUNDS, std::vector<Monkey>& monkeys, std::function<void(size_type&)> reduceWorry)
 {
     for (int i = 0; i < ROUNDS; ++i)
     {
         for (auto& monkey : monkeys)
         {
-            while (not monkey.ints.empty())
+            while (not monkey.items.empty())
             {
-                auto& worry = monkey.ints.front();
+                auto& worry = monkey.items.front();
                 worry = monkey.onInspect(worry);
 
                 reduceWorry(worry);
 
                 monkey.totalInspections++;
                 int target = monkey.testWorry(worry);
-                monkey.throwint(monkeys[target]);
+                monkey.throwItem(monkeys[target]);
             }
         }
     }
@@ -131,7 +133,7 @@ std::string Day11::challenge01(std::ifstream& input)
         }
     }
 
-    performRounds(20, monkeys, [](int& worry) {
+    performRounds(20, monkeys, [](size_type& worry) {
         worry /= 3;
     });
 
@@ -156,13 +158,13 @@ std::string Day11::challenge02(std::ifstream& input)
         }
     }
 
-    int minimized = 1;
+    size_type minimized = 1;
     for (const auto& m : monkeys)
     {
         minimized *= m.divTest;
     }
 
-    performRounds(10000, monkeys, [&monkeys, minimized](int& worry) {
+    performRounds(10000, monkeys, [&monkeys, minimized](size_type& worry) {
         worry %= minimized;
     });
 
